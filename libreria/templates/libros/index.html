@@ -31,7 +31,37 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="">
+
+                    {% for libro in libros %}
+                        <tr class="""">
+                            <td>{{ libro.id }}</td>
+                            <td>{{ libro.titulo }}</td>
+                            <td> <img src="{{ libro.imagen.url }}" height="100" /></td>
+                            <td>{{ libro.descripcion }}</td>
+                            <td>
+                            <a
+                                name=""
+                                id=""
+                                class="btn btn-primary"
+                                href="{% url 'editar' %}"
+                                role="button"
+                                >Editar</a
+                            >
+                            
+                            | 
+                            <a
+                                name=""
+                                id=""
+                                class="btn btn-danger"
+                                href="#"
+                                role="button"
+                                >Eliminar</a
+                            >
+                        </td>
+                        </tr>
+
+                    {% endfor%}
+                    <!-- <tr class="">
                         <td>1</td>
                         <td>Django con Python</td>
                         <td>Imagen.jpg</td>
@@ -56,7 +86,7 @@
                                 >Eliminar</a
                             >
                         </td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </div>

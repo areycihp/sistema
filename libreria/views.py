@@ -1,6 +1,7 @@
 #Creacion de la vista
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Libro
 
 # Create your views here.
 
@@ -12,7 +13,8 @@ def nosotros(request):
     return render(request, 'paginas/nosotros.html') #Busca el HTML
 
 def libros(request):
-    return render(request, 'libros/index.html')
+    libros = Libro.objects.all()
+    return render(request, 'libros/index.html', {'libros': libros})
 
 def crear(request):
     return render(request, 'libros/crear.html')
