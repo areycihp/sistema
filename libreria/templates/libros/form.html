@@ -1,13 +1,30 @@
 <form enctype="multipart/form-data" method="POST">
+    <!-- ##Llave para validar que el formulario pertenece a la aplicacion -->
+    {% csrf_token %}  
+    {% for campo in formulario %}
     <div class="mb-3">
-        <label for="" class="form-label">Nombre:</label>
+        <label for="" class="form-label">{{ campo.label }}</label>
         <input
-            type="text"
+            type="{{ campo.field.widget.input_type }}"
             class="form-control"
-            placeholder="Nombre"
+            name="{{ campo.name }}"
+            id=""
+            aria-describedby="helpId"
+            placeholder="{{ campo.label }}"
         />
     </div>
-    
+    <div class="col-12 help-text">
+        {{ campo.errors}}
+    </div>
+    {% endfor %}
 
+    <input
+        name=""
+        id=""
+        class="btn btn-success"
+        type="submit"
+        value="Agregar"
+    />
+    
 
 </form>
